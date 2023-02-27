@@ -1,9 +1,9 @@
 
 public class SimpleDate {
 
-    private int day;
-    private int month;
-    private int year;
+    private final int day;
+    private final int month;
+    private final int year;
 
     public SimpleDate(int day, int month, int year) {
         this.day = day;
@@ -26,13 +26,9 @@ public class SimpleDate {
             return true;
         }
 
-        if (this.year == other.year
+        return this.year == other.year
                 && this.month == other.month
-                && this.day < other.day) {
-            return true;
-        }
-
-        return false;
+                && this.day < other.day;
     }
 
     public int differenceInYears(SimpleDate other) {
@@ -51,4 +47,19 @@ public class SimpleDate {
         return this.year - other.year - yearRemoved;
     }
 
+    public boolean equals(Object compared) {
+        if (this == compared) {
+            return true;
+        }
+
+        if (!(compared instanceof SimpleDate)) {
+            return false;
+        }
+
+        SimpleDate comparedDate = (SimpleDate) compared;
+
+        return this.day == comparedDate.day
+                && this.month == comparedDate.month
+                && this.year == comparedDate.year;
+    }
 }

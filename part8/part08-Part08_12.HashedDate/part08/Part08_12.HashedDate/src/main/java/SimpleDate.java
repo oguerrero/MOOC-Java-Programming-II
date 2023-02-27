@@ -1,9 +1,9 @@
 
 public class SimpleDate {
 
-    private int day;
-    private int month;
-    private int year;
+    private final int day;
+    private final int month;
+    private final int year;
 
     public SimpleDate(int day, int month, int year) {
         this.day = day;
@@ -26,13 +26,9 @@ public class SimpleDate {
             return true;
         }
 
-        if (this.year == other.year
+        return this.year == other.year
                 && this.month == other.month
-                && this.day < other.day) {
-            return true;
-        }
-
-        return false;
+                && this.day < other.day;
     }
 
     public int differenceInYears(SimpleDate other) {
@@ -49,6 +45,18 @@ public class SimpleDate {
         }
 
         return this.year - other.year - yearRemoved;
+    }
+
+    public int hashCode() {
+        if (this.day < 10 && this.month < 10) {
+            return Integer.parseInt(this.year + "0" + this.month + "0" + this.day);
+        } else if (this.day < 10) {
+            return Integer.parseInt(this.year + "" + this.month + "0" + this.day);
+        } else if (this.month < 10) {
+            return Integer.parseInt(this.year + "0" + this.month + "" + this.day);
+        } else {
+            return Integer.parseInt(this.year + "" + this.month + "" + this.day);
+        }
     }
 
 }

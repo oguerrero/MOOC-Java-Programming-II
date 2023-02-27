@@ -1,16 +1,10 @@
-
-
 public class Warehouse {
 
     private double capacity;
     private double balance;
 
     public Warehouse(double capacity) {
-        if (capacity > 0.0) {
-            this.capacity = capacity;
-        } else {
-            this.capacity = 0.0;
-        }
+        this.capacity = Math.max(capacity, 0.0);
 
         this.balance = 0.0;
     }
