@@ -6,6 +6,16 @@ public class Program {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        System.out.print("How many random numbers should be printed? ");
+        int amount = Integer.parseInt(scanner.nextLine());
+
+        Random random = new Random();
+
+        for (int i = 0; i <= amount; i++) {
+            int number = random.nextInt(11);
+            System.out.println(number);
+        }
     }
 
 }
