@@ -2,8 +2,8 @@
 
 public class Item {
 
-    private String name;
-    private int weight;
+    private final String name;
+    private final int weight;
 
     public Item(String name, int weight) {
         this.name = name;
@@ -21,5 +21,9 @@ public class Item {
     @Override
     public String toString() {
         return this.name + ": (" + this.weight + " kg)";
+    }
+
+    public int getweight() {
+        return this.weight;
     }
 }
